@@ -1,7 +1,7 @@
 class File:
-	def __init__(self,name, change):
+	def __init__(self,name):
 		self.name = name
-		self.change = change
+		self.change = Change()
 		self.tracked = False
 
 
@@ -14,8 +14,7 @@ class File:
 
 
 	def getName(self):
-		name, ext = self.name.split(".")
-		return name,ext
+		return self.name
 
 
 	def getTrack(self):
