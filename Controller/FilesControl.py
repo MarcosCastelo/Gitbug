@@ -3,6 +3,7 @@ class File:
 		self.name = name
 		self.change = Change()
 		self.tracked = False
+		self.source = ""
 
 
 	def markTracked(self):
@@ -11,6 +12,7 @@ class File:
 
 	def dismarkTracked(self):
 		self.tracked = False
+		self.change.dismarkStaged()
 
 
 	def getName(self):
@@ -35,7 +37,8 @@ class File:
 		self.change.dismarkStaged()
 
 
-	def modify(self):
+	def modify(self, modifications):
+		self.source = modifications
 		self.staged.dismarkStaged()
 
 
@@ -57,4 +60,27 @@ class Change:
 		self.staged = False
 
 
+class FileManager:
+	def __init__(self):
+		self.files = {}
 
+	def createFile(self, name):
+		file = File(name)
+		self.files.update({name:file})
+		return "File created: " + name
+
+	def delFile(self, name):
+		if name in self.files:
+			del self.files[name]
+
+
+	def modify(self, name, modifications):
+		if name in self.files:
+			self.files[name].modify(modifications)
+
+
+	def getFile(self, name):
+		if name in self.files:
+			return self.files[name]
+		else:
+			return None
