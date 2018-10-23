@@ -1,11 +1,12 @@
-from Useful.Encrypt import *
+from . import Useful
 import random
 class Commit:
 	def __init__(self, date):
 		self.commitedFiles = {}
 		self.date = date
 		id = random.randint(1000, 9999)
-		self.code = encrypt(id + date)
+
+		self.code = Useful.encrypt(str(id)+str(date))
 
 
 	def update(self, file):

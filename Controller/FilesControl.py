@@ -75,12 +75,15 @@ class FileManager:
 
 
 	def modify(self, name, modifications):
-		if name in self.files:odify(modifications)
+		if name in self.files:
 
-			self.files[name].m
+			self.files[name].modify(modifications)
 
 	def getFile(self, name):
 		if name in self.files:
 			return self.files[name]
 		else:
 			return None
+
+	def getFiles(self):
+		return self.files

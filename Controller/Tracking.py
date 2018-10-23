@@ -32,3 +32,7 @@ class TrackingManager:
 			return file.getName() + " not tracked"
 		else:
 			return "File doesn't exist"
+
+
+	def getTrackeds(self):
+		return self.trackedFiles
