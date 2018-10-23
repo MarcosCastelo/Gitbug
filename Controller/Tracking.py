@@ -23,9 +23,12 @@ class TrackingManager:
 
 
 	def resetFile(self, file):
-		if file.getName() in self.trackedFiles:
-			file.dismarkTracked()
-			del self.trackedFiles[file.getName()]
-			return file.getName() + " is dropped"
+		if file is not None:
+			if file.getName() in self.trackedFiles:
+				file.dismarkTracked()
+				del self.trackedFiles[file.getName()]
+				return file.getName() + " is dropped"
 
-		return file.getName() + " not tracked"
+			return file.getName() + " not tracked"
+		else:
+			return "File doesn't exist"
