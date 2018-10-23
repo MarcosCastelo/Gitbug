@@ -39,7 +39,7 @@ class File:
 
 	def modify(self, modifications):
 		self.source = modifications
-		self.staged.dismarkStaged()
+		self.change.dismarkStaged()
 
 
 class Change:
@@ -76,8 +76,10 @@ class FileManager:
 
 	def modify(self, name, modifications):
 		if name in self.files:
-
 			self.files[name].modify(modifications)
+			return "Sucess"
+		return "Failed! File not found"
+
 
 	def getFile(self, name):
 		if name in self.files:
